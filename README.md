@@ -38,6 +38,10 @@ Just remember to provide valid URLs (with `/config` prefix).
 
 Configuration file is located at `config/config.json`.
 
+YAML format is also supported.
+In this case, file should be named `config.yaml` and placed in `config` directory as well.
+If both formats are present, JSON will be used.
+
 
 ### 📱 Tweaking the user interface
 
@@ -68,18 +72,52 @@ Some of them are listed in _Settings_ page and can be customized by end-user.
 | `href`			| URL address of your service. It is directly passed to `<a>` tag.				|
 | `icon`			| Path to an icon of your service.												|
 
-Example:
-```
-...
+### Example configuration:
+
+```json
 {
-	"name": "CalDav",
-	"desc": "Simple CalDav server for calendar sync between various devices.",
-	"href": "caldav",
-	"icon": "img/preview/caldav.png"
-},
-...
+  "ui": {
+    "name": "honey",
+    "desc": "Nice and sweet place for all your self-hosted services.",
+    "icon": "img/icon.png",
+    "wallpaper": "img/background.jpg",
+    "wallpaper_dark": "img/background-dark.jpg",
+    "dark_mode": false,
+    "open_new_tab": false,
+    "blur": true,
+    "animations": true
+  },
+  "services": [
+    {
+      "name": "CalDav",
+      "desc": "Simple CalDav server for calendar sync between various devices.",
+      "href": "caldav",
+      "icon": "img/preview/caldav.png"
+    }
+  ]
+}
 ```
 
+or 
+
+```yaml
+ui:
+  name: honey
+  desc: Nice and sweet place for all your self-hosted services.
+  icon: img/icon.png
+  wallpaper: img/background.jpg
+  wallpaper_dark: img/background-dark.jpg
+  dark_mode: false
+  open_new_tab: false
+  blur: true
+  animations: true
+
+services:
+  - name: CalDav
+    desc: Simple CalDav server for calendar sync between various devices.
+    href: caldav
+    icon: img/preview/caldav.png
+```
 
 ## 🛠️ Development
 
