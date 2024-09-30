@@ -1,5 +1,3 @@
-import { parse } from 'yaml'
-
 import App from "./App"
 
 window.addEventListener("DOMContentLoaded", async () => {
@@ -11,8 +9,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 			config = await response.json()
 			window.app = new App(config)
 		} else if (response.status === 404) {
+			const yaml = await import('yaml')
 			response = await fetch("config/config.yaml")
-			config = parse(await response.text())
+			config = yaml.parse(await response.text())
 			window.app = new App(config)
 		} else {
 			console.error("Failed to fetch config file:", response.status)
